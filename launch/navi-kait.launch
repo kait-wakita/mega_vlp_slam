@@ -10,14 +10,12 @@
 
   <!-- LRFのデバイスドライバノード -->
   <include file="$(find mega_vlp_slam)/launch/VLP16_points.launch" />
-  
 
   <!-- メガローバーの旋回中心からLRFまでの座標変換の設定 -->
-  <node pkg="tf" type="static_transform_publisher" name="stp_laser" args="-0.05 0 0.0 0 0 0 base_link laser_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="stp_laser" args="-0.05 0 0 0 0 0 base_link laser_link 100" />
 
- 
   <!-- mapサーバー -->
-  <arg name="map_file" default="$(find mega_vlp_slam)/maps/map-d2.yaml"/>　<!--マップファイルのパスの指定 -->
+  <arg name="map_file" default="$(find mega_vlp_slam)/maps/map-kait.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
  
   <!-- 
@@ -71,7 +69,7 @@
 
   <!-- Rviz -->
   <!--
-<node pkg="rviz" type="rviz" args="-d '$(find mega_vlp_slam)/rviz/navigation.rviz'" name="visualizer" respawn="true" />
+     <node pkg="rviz" type="rviz" args="-d '$(find mega_vlp_slam)/rviz/navigation.rviz'" name="visualizer" respawn="true" />
   -->
 </launch>
 
